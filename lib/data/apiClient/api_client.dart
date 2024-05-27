@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:js';
 
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as Dio;

@@ -6,14 +6,17 @@ class ColorConstant {
   static Color green = fromHex('#4BB543');
 
   static Color whiteA700 = fromHex('#ffffff');
-  static Color deep = fromHex("#c55b1f");
+  static Color deep = fromHex("#cf5919");
   static Color deep400 = fromHex("#a54008");
   static Color deep700 = fromHex("#9b3908");
   static Color deep900 = fromHex("#833100");
+  static Color deep999 = fromHex('#833100');
   static Color chocolate = fromHex("#8b765b");
   static Color grey = fromHex("#d5d3d6");
   static Color black = fromHex("#080c18");
   static Color pink = fromHex("#a74365");
+  static Color gray800 = fromHex('#350b40');
+  static Color blueGray300 = fromHex('#9bb0bd');
 
   static Color orange = fromHex('#cf5919');
   static Color fromHex(String hexString) {
