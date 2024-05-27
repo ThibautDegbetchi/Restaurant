@@ -6,10 +6,10 @@ import 'package:restaurant/core/app_export.dart';
 import 'package:restaurant/widgets/custom_button.dart';
 import '../../core/utils/image_constant.dart';
 import '../../core/utils/size_utils.dart';
-import 'controller/splash_controller.dart';
+import 'controller/Onboarding_controller.dart';
 
-class SplashScreen extends GetWidget<SplashController> {
-  const SplashScreen({super.key});
+class OnboardingScreen extends GetWidget<OnboardingController> {
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,8 @@ class SplashScreen extends GetWidget<SplashController> {
                         color: ColorConstant.whiteA700,
                       ),
                       onTap: () {
-                        //  Get.offNamedUntil(AppRoutes.login, (route) => false);
+                        Get.offNamedUntil(
+                            AppRoutes.loginScreen, (route) => false);
                       },
                     )),
               )

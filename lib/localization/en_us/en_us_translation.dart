@@ -35,4 +35,18 @@ final Map<String, String> enUs = {
   'msg_description': 'Description',
   'msg_see_more': 'See More',
   'msg_reviews': 'Reviews',
+  'msg_login': 'Connexion',
+  'msg_register': 'Inscription',
+  'msg_have_account': 'Vous n\'avez pas de compte?',
+  'msg_forgot_password': 'Mot de passe oublié',
+  'lbl_email': 'Email',
+  'lbl_phone': 'Téléphone',
+  'lbl_password': 'Mot de passe',
+  'msg_hint': '******',
+  'msg_number_hint': '60000000',
+  'lbl_phone_number': 'Numéro de téléphone',
+  'lbl_subscribe': 'S\'inscrire',
+  'lbl_first_name': 'Prénom',
+  'lbl_last_name': 'Nom',
+  'lbl_password_confirm': 'Confirmer mot de passe'
 };
