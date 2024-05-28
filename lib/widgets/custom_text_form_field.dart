@@ -2,34 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
-    Key? key,
-    this.alignment,
-    this.width,
-    this.scrollPadding,
-    this.controller,
-    this.focusNode,
-    this.autofocus = true,
-    this.textStyle,
-    this.obscureText = false,
-    this.textInputAction = TextInputAction.next,
-    this.textInputType = TextInputType.text,
-    this.maxLines,
-    this.hintText,
-    this.hintStyle,
-    this.prefix,
-    this.prefixConstraints,
-    this.suffix,
-    this.suffixConstraints,
-    this.contentPadding,
-    this.borderDecoration,
-    this.fillColor,
-    this.filled = true,
-    this.validator,
-  }) : super(key: key);
+  CustomTextFormField(
+      {Key? key,
+      this.alignment,
+      this.width,
+      this.scrollPadding,
+      this.controller,
+      this.focusNode,
+      this.autofocus = true,
+      this.textStyle,
+      this.obscureText = false,
+      this.textInputAction = TextInputAction.next,
+      this.textInputType = TextInputType.text,
+      this.maxLines,
+      this.hintText,
+      this.hintStyle,
+      this.prefix,
+      this.prefixConstraints,
+      this.suffix,
+      this.suffixConstraints,
+      this.contentPadding,
+      this.borderDecoration,
+      this.fillColor,
+      this.filled = true,
+      this.validator,
+      this.onChange,
+      this.height})
+      : super(key: key);
 
   final Alignment? alignment;
   final double? width;
+  final double? height;
   final EdgeInsets? scrollPadding; // Correction ici
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -50,6 +53,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
   final bool? filled;
   final FormFieldValidator<String>? validator;
+  final Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +65,9 @@ class CustomTextFormField extends StatelessWidget {
         : textFormFieldWidget;
   }
 
-  Widget get textFormFieldWidget => SizedBox(
+  Widget get textFormFieldWidget => Container(
         width: width ?? double.maxFinite,
+        height: height ?? 80,
         child: TextFormField(
           scrollPadding: scrollPadding ??
               EdgeInsets.only(
@@ -78,10 +83,13 @@ class CustomTextFormField extends StatelessWidget {
           maxLines: maxLines ?? 1,
           decoration: decoration,
           validator: validator,
+          onChanged: onChange,
         ),
       );
 
   InputDecoration get decoration => InputDecoration(
+        errorStyle: TextStyle(fontSize: 8),
+        // constraints: BoxConstraints(minHeight: 60, maxHeight: 60),
         hintText: hintText ?? "",
         hintStyle:
             hintStyle ?? TextStyle(), // Utilisation de valeurs par défaut
@@ -94,7 +102,7 @@ class CustomTextFormField extends StatelessWidget {
             EdgeInsets.only(
               left: 16,
               top: 21,
-              bottom: 21,
+              bottom: 1,
             ),
         fillColor: fillColor ?? Colors.grey[200],
         filled: filled,

@@ -87,7 +87,7 @@ class OnboardingScreen extends GetWidget<OnboardingController> {
                     width: size.width * 0.9,
                     margin: getMarginOrPadding(all: 15),
                     child: CustomButton(
-                      shape: ButtonShape.RoundedBorder8,
+                      shape: ButtonShape.RoundedBorder15,
                       text: 'Get Started',
                       suffixWidget: Icon(
                         Icons.navigate_next,

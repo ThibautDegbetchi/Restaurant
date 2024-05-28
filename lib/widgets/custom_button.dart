@@ -186,6 +186,24 @@ class CustomButton extends StatelessWidget {
             8.00,
           ),
         );
+      case ButtonShape.RoundedBorder2:
+        return BorderRadius.circular(
+          getHorizontalSize(
+            2.00,
+          ),
+        );
+      case ButtonShape.RoundedBorder6:
+        return BorderRadius.circular(
+          getHorizontalSize(
+            6.00,
+          ),
+        );
+      case ButtonShape.RoundedBorder10:
+        return BorderRadius.circular(
+          getHorizontalSize(
+            6.00,
+          ),
+        );
       case ButtonShape.Square:
         return BorderRadius.circular(0);
       case ButtonShape.RoundedBorder15:
@@ -343,6 +361,30 @@ class CustomButton extends StatelessWidget {
             1.00,
           ),
         );
+      case ButtonFontStyle.deepBold:
+        return TextStyle(
+          color: ColorConstant.deep900,
+          fontSize: getFontSize(
+            17,
+          ),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.w800,
+          height: getVerticalSize(
+            1.00,
+          ),
+        );
+      case ButtonFontStyle.NunitoRegularGrey:
+        return TextStyle(
+          color: ColorConstant.grey,
+          fontSize: getFontSize(
+            17,
+          ),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.w800,
+          height: getVerticalSize(
+            1.00,
+          ),
+        );
 
       default:
         return TextStyle(
@@ -360,7 +402,14 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-enum ButtonShape { Square, RoundedBorder2, RoundedBorder8, RoundedBorder15 }
+enum ButtonShape {
+  Square,
+  RoundedBorder2,
+  RoundedBorder6,
+  RoundedBorder8,
+  RoundedBorder10,
+  RoundedBorder15
+}
 
 enum ButtonPadding {
   PaddingAll13,
@@ -393,4 +442,6 @@ enum ButtonFontStyle {
   MontserratRomanRegular14Neutre,
   MontserratRomanRegular12,
   MontserratRomanRegular12Neutre,
+  deepBold,
+  NunitoRegularGrey
 }

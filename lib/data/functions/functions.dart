@@ -26,6 +26,7 @@ setHeadersWithToken() async => {
 getToken() async {
   var token = await getSharedPref(preftoken);
   print(token);
+  return token;
 }
 
 appSnackBar(String type, title, message) {

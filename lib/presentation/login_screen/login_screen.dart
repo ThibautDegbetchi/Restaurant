@@ -7,6 +7,7 @@ import 'package:restaurant/core/app_export.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 import '../../core/utils/color_constant.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'controller/login_controller.dart';
 
@@ -54,9 +55,10 @@ class LoginScreen extends GetWidget<LoginController> {
                           )
                         ],
                         labelColor: ColorConstant.black,
+                        indicatorColor: ColorConstant.deep,
                       ),
                       Container(
-                        height: size.height * 0.29,
+                        height: size.height * 0.26,
                         child: Column(
                           children: [
                             Expanded(
@@ -82,30 +84,46 @@ class LoginScreen extends GetWidget<LoginController> {
                                             left: 15, right: 10),
                                         child: Container(
                                           height: 50,
-                                          child: CustomTextFormField(
-                                            width: size.width * 0.9,
-                                            controller:
-                                                controller.emailController,
-                                            textInputType:
-                                                TextInputType.emailAddress,
-                                            hintText:
-                                                'thibautdegbetchi@gmail.com',
-                                            hintStyle: TextStyle(
-                                                color: ColorConstant.grey,
-                                                fontSize: 14),
-                                            autofocus: false,
-                                            suffix: Icon(
-                                              Icons.email,
-                                              color: ColorConstant.deep,
-                                            ),
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Entrez un mail valide';
-                                              }
-                                              return null;
-                                            },
-                                          ),
+                                          child: Obx(() => CustomTextFormField(
+                                                width: size.width * 0.9,
+                                                controller:
+                                                    controller.emailController,
+                                                textInputType:
+                                                    TextInputType.emailAddress,
+                                                hintText:
+                                                    'thibautdegbetchi@gmail.com',
+                                                hintStyle: TextStyle(
+                                                    color: ColorConstant.grey,
+                                                    fontSize: 14),
+                                                autofocus: false,
+                                                suffix: controller
+                                                        .setMailIconColor.value
+                                                    ? Icon(
+                                                        Icons.email,
+                                                        color:
+                                                            ColorConstant.deep,
+                                                      )
+                                                    : Icon(
+                                                        Icons.email,
+                                                        color:
+                                                            ColorConstant.grey,
+                                                      ),
+                                                onChange: (value) {
+                                                  if (value.length != 0)
+                                                    controller.setMailIconColor
+                                                        .value = true;
+                                                  else
+                                                    controller.setMailIconColor
+                                                        .value = false;
+                                                },
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Entrez un mail valide';
+                                                  }
+                                                  return null;
+                                                },
+                                              )),
                                         ),
                                       ),
                                       SizedBox(
@@ -140,24 +158,54 @@ class LoginScreen extends GetWidget<LoginController> {
                                               obscureText:
                                                   !controller.seePassword.value,
                                               suffix: InkWell(
-                                                onTap: () {
-                                                  controller.seePassword.value =
-                                                      !controller
-                                                          .seePassword.value;
-                                                },
-                                                child: controller
-                                                        .seePassword.value
-                                                    ? Icon(
-                                                        Icons.visibility,
-                                                        color:
-                                                            ColorConstant.deep,
-                                                      )
-                                                    : Icon(
-                                                        Icons.visibility_off,
-                                                        color:
-                                                            ColorConstant.deep,
-                                                      ),
-                                              ),
+                                                  onTap: () {
+                                                    controller
+                                                            .seePassword.value =
+                                                        !controller
+                                                            .seePassword.value;
+                                                  },
+                                                  child: controller
+                                                          .seePassword.value
+                                                      ? (controller
+                                                              .setPassIconColor
+                                                              .value
+                                                          ? Icon(
+                                                              Icons.visibility,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .deep,
+                                                            )
+                                                          : Icon(
+                                                              Icons.visibility,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .grey,
+                                                            ))
+                                                      : (controller
+                                                              .setPassIconColor
+                                                              .value
+                                                          ? Icon(
+                                                              Icons
+                                                                  .visibility_off,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .deep,
+                                                            )
+                                                          : Icon(
+                                                              Icons
+                                                                  .visibility_off,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .grey,
+                                                            ))),
+                                              onChange: (value) {
+                                                if (value.length != 0)
+                                                  controller.setPassIconColor
+                                                      .value = true;
+                                                else
+                                                  controller.setPassIconColor
+                                                      .value = false;
+                                              },
                                               validator: (value) {
                                                 if (value == null ||
                                                     value.isEmpty) {
@@ -203,10 +251,24 @@ class LoginScreen extends GetWidget<LoginController> {
                                             hintStyle: TextStyle(
                                                 color: ColorConstant.grey,
                                                 fontSize: 14),
-                                            suffix: Icon(
-                                              Icons.phone,
-                                              color: ColorConstant.deep,
-                                            ),
+                                            suffix: controller
+                                                    .setPhoneIconColor.value
+                                                ? Icon(
+                                                    Icons.phone,
+                                                    color: ColorConstant.deep,
+                                                  )
+                                                : Icon(
+                                                    Icons.phone,
+                                                    color: ColorConstant.grey,
+                                                  ),
+                                            onChange: (value) {
+                                              if (value.length != 0)
+                                                controller.setPhoneIconColor
+                                                    .value = true;
+                                              else
+                                                controller.setPhoneIconColor
+                                                    .value = false;
+                                            },
                                             validator: (value) {
                                               if (value == null ||
                                                   value.isEmpty) {
@@ -257,17 +319,47 @@ class LoginScreen extends GetWidget<LoginController> {
                                                   },
                                                   child: controller
                                                           .seePassword.value
-                                                      ? Icon(
-                                                          Icons.visibility,
-                                                          color: ColorConstant
-                                                              .deep,
-                                                        )
-                                                      : Icon(
-                                                          Icons.visibility_off,
-                                                          color: ColorConstant
-                                                              .deep,
-                                                        ),
+                                                      ? (controller
+                                                              .setPass2IconColor
+                                                              .value
+                                                          ? Icon(
+                                                              Icons.visibility,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .deep,
+                                                            )
+                                                          : Icon(
+                                                              Icons.visibility,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .grey,
+                                                            ))
+                                                      : (controller
+                                                              .setPass2IconColor
+                                                              .value
+                                                          ? Icon(
+                                                              Icons
+                                                                  .visibility_off,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .deep,
+                                                            )
+                                                          : Icon(
+                                                              Icons
+                                                                  .visibility_off,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .grey,
+                                                            )),
                                                 ),
+                                                onChange: (value) {
+                                                  if (value.length != 0)
+                                                    controller.setPass2IconColor
+                                                        .value = true;
+                                                  else
+                                                    controller.setPass2IconColor
+                                                        .value = false;
+                                                },
                                                 validator: (value) {
                                                   if (value == null ||
                                                       value.isEmpty) {
@@ -278,9 +370,6 @@ class LoginScreen extends GetWidget<LoginController> {
                                               )),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
                                     ],
                                   ),
                                 ],
@@ -290,25 +379,20 @@ class LoginScreen extends GetWidget<LoginController> {
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           GestureDetector(
                               onTap: () {},
-                              child: Text(
-                                'msg_forgot_password'.tr,
-                                style: TextStyle(
-                                    color: ColorConstant.grey, fontSize: 10),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 25.0),
+                                child: Text(
+                                  'msg_forgot_password'.tr,
+                                  // textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                      color: ColorConstant.grey, fontSize: 10),
+                                ),
                               )),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed(AppRoutes.registerScreen);
-                            },
-                            child: Text(
-                              'msg_have_account'.tr,
-                              style: TextStyle(
-                                  color: ColorConstant.deep900, fontSize: 10),
-                            ),
-                          )
                         ],
                       ),
                       SizedBox(
@@ -316,15 +400,46 @@ class LoginScreen extends GetWidget<LoginController> {
                       ),
                       RoundedLoadingButton(
                           width: size.width * 0.9,
-                          height: size.height * 0.054,
+                          height: size.height * 0.06,
                           color: ColorConstant.deep,
                           borderRadius: 14,
                           controller: controller.btnControlller,
                           onPressed: controller.doSomething,
                           child: Text(
                             'msg_login'.tr,
-                            style: TextStyle(color: ColorConstant.whiteA700),
-                          ))
+                            style: TextStyle(
+                                color: ColorConstant.whiteA700, fontSize: 17),
+                          )),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                          height: size.height * 0.054,
+                          width: size.width * 0.9,
+                          margin: getMarginOrPadding(all: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'msg_have_account'.tr,
+                                style: TextStyle(
+                                    color: ColorConstant.black, fontSize: 16),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.registerScreen);
+                                },
+                                child: Text(
+                                  'lbl_subscribe'.tr,
+                                  style: TextStyle(
+                                      color: ColorConstant.deep, fontSize: 16),
+                                ),
+                              )
+                            ],
+                          )),
                     ],
                   ),
                 ))));

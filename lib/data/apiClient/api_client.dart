@@ -30,7 +30,7 @@ class ApiClient extends GetConnect {
     try {
       dio.options.headers = await setHeadersWithToken();
       var response = await dio.post(url, data: map);
-      Dio.Response apiResponse = response.data;
+      var apiResponse = response.data;
       print('Api response: $apiResponse');
       return {"result": apiResponse};
     } on Dio.DioError catch (e) {

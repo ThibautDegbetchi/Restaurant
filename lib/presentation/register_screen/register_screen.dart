@@ -57,26 +57,30 @@ class RegisterScreen extends GetWidget<RegisterController> {
                               height: 5,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 15, right: 10),
-                              child: Container(
-                                height: 50,
-                                child: CustomTextFormField(
-                                  width: size.width * 0.9,
-                                  controller: controller.nameController,
-                                  textInputType: TextInputType.text,
-                                  hintText: 'Degbetchi',
-                                  hintStyle: TextStyle(
-                                      color: ColorConstant.grey, fontSize: 14),
-                                  autofocus: false,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Entrez un mail valide';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ),
-                            ),
+                                padding: EdgeInsets.only(left: 15, right: 10),
+                                child: Container(
+                                  height: 50,
+                                  child: CustomTextFormField(
+                                    width: size.width * 0.9,
+                                    controller: controller.nameController,
+                                    textInputType: TextInputType.text,
+                                    hintText: 'Degbetchi',
+                                    prefix: Icon(
+                                      Icons.person,
+                                      color: ColorConstant.grey,
+                                    ),
+                                    hintStyle: TextStyle(
+                                        color: ColorConstant.grey,
+                                        fontSize: 14),
+                                    autofocus: false,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Entrez un mail valide';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                )),
                             SizedBox(
                               height: 10,
                             ),
@@ -100,13 +104,17 @@ class RegisterScreen extends GetWidget<RegisterController> {
                                   width: size.width * 0.9,
                                   controller: controller.firstNameController,
                                   textInputType: TextInputType.text,
-                                  hintText: 'Degbetchi',
+                                  hintText: 'Thibaut',
                                   hintStyle: TextStyle(
                                       color: ColorConstant.grey, fontSize: 14),
                                   autofocus: false,
+                                  prefix: Icon(
+                                    Icons.person,
+                                    color: ColorConstant.grey,
+                                  ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Entrez un mail valide';
+                                      return 'Entrez un prénom valide';
                                     }
                                     return null;
                                   },
@@ -137,9 +145,9 @@ class RegisterScreen extends GetWidget<RegisterController> {
                                   hintStyle: TextStyle(
                                       color: ColorConstant.grey, fontSize: 14),
                                   autofocus: false,
-                                  suffix: Icon(
+                                  prefix: Icon(
                                     Icons.email,
-                                    color: ColorConstant.deep,
+                                    color: ColorConstant.grey,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -174,13 +182,13 @@ class RegisterScreen extends GetWidget<RegisterController> {
                                   hintStyle: TextStyle(
                                       color: ColorConstant.grey, fontSize: 14),
                                   autofocus: false,
-                                  suffix: Icon(
+                                  prefix: Icon(
                                     Icons.phone,
-                                    color: ColorConstant.deep,
+                                    color: ColorConstant.grey,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Entrez un mail valide';
+                                      return 'Entrez un numéro valide';
                                     }
                                     return null;
                                   },
@@ -220,14 +228,24 @@ class RegisterScreen extends GetWidget<RegisterController> {
                                             !controller.seePassword.value;
                                       },
                                       child: controller.seePassword.value
-                                          ? Icon(
-                                              Icons.visibility,
-                                              color: ColorConstant.deep,
-                                            )
-                                          : Icon(
-                                              Icons.visibility_off,
-                                              color: ColorConstant.deep,
-                                            ),
+                                          ? (controller.setPassIconColor.value
+                                              ? Icon(
+                                                  Icons.visibility,
+                                                  color: ColorConstant.deep,
+                                                )
+                                              : Icon(
+                                                  Icons.visibility,
+                                                  color: ColorConstant.grey,
+                                                ))
+                                          : (controller.setPassIconColor.value
+                                              ? Icon(
+                                                  Icons.visibility_off,
+                                                  color: ColorConstant.deep,
+                                                )
+                                              : Icon(
+                                                  Icons.visibility_off,
+                                                  color: ColorConstant.grey,
+                                                )),
                                     ),
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -265,22 +283,41 @@ class RegisterScreen extends GetWidget<RegisterController> {
                                         color: ColorConstant.grey,
                                         fontSize: 14),
                                     autofocus: false,
-                                    obscureText: !controller.seePassword.value,
+                                    obscureText: !controller.seePassword2.value,
                                     suffix: InkWell(
-                                      onTap: () {
-                                        controller.seePassword2.value =
-                                            !controller.seePassword2.value;
-                                      },
-                                      child: controller.seePassword2.value
-                                          ? Icon(
-                                              Icons.visibility,
-                                              color: ColorConstant.deep,
-                                            )
-                                          : Icon(
-                                              Icons.visibility_off,
-                                              color: ColorConstant.deep,
-                                            ),
-                                    ),
+                                        onTap: () {
+                                          controller.seePassword2.value =
+                                              !controller.seePassword2.value;
+                                        },
+                                        child: controller.seePassword2.value
+                                            ? (controller
+                                                    .setPassIconColor2.value
+                                                ? Icon(
+                                                    Icons.visibility,
+                                                    color: ColorConstant.deep,
+                                                  )
+                                                : Icon(
+                                                    Icons.visibility,
+                                                    color: ColorConstant.grey,
+                                                  ))
+                                            : (controller
+                                                    .setPassIconColor2.value
+                                                ? Icon(
+                                                    Icons.visibility_off,
+                                                    color: ColorConstant.deep,
+                                                  )
+                                                : Icon(
+                                                    Icons.visibility_off,
+                                                    color: ColorConstant.grey,
+                                                  ))),
+                                    onChange: (value) {
+                                      if (value.length != 0)
+                                        controller.setPassIconColor2.value =
+                                            true;
+                                      else
+                                        controller.setPassIconColor2.value =
+                                            false;
+                                    },
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Entrez un mot de passe valide';

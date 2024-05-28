@@ -21,6 +21,11 @@ class RegisterController extends GetxController {
 
   RxBool seePassword = false.obs;
   RxBool seePassword2 = false.obs;
+  RxBool setPassIconColor = false.obs;
+  RxBool setPassIconColor2 = false.obs;
+  RxBool setPhoneIconColor = false.obs;
+  RxBool setMailIconColor2 = false.obs;
+
   ApiClient apiClient = ApiClient();
 
   @override
@@ -28,26 +33,26 @@ class RegisterController extends GetxController {
     super.onInit();
   }
 
-  doSomething() async{
+  doSomething() async {
     if (formKey.currentState!.validate()) {
-      if(passwordController.text==passwordController2.text){
+      if (passwordController.text == passwordController2.text) {
         map = {
-          'name': nameController.text +' '+ firstNameController.text,
+          'name': nameController.text + ' ' + firstNameController.text,
           'email': emailController.text,
           'phoneNumber': phoneController.text,
           'password': passwordController.text,
         };
-        final result =await apiClient.postFromApi(registerUrl, map);
-        if(result!=null){
+        final result = await apiClient.postFromApi(registerUrl, map);
+        if (result != null) {
           appSnackBar("success", "Inscription", "Inscription réussit");
           Get.toNamed(AppRoutes.loginScreen);
           btnController.success();
         }
-      }else{
+      } else {
         appSnackBar("error", "Confirmation", "Mots de passe non identiques");
         btnController.reset();
       }
-    }else{
+    } else {
       appSnackBar("error", "Inscriptiion", "Inscription échouée");
       btnController.reset();
     }

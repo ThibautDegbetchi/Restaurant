@@ -21,6 +21,10 @@ class LoginController extends GetxController
   late TabController tabController;
   Map<String, dynamic> map = {};
   ApiClient apiClient = ApiClient();
+  RxBool setMailIconColor = false.obs;
+  RxBool setPassIconColor = false.obs;
+  RxBool setPass2IconColor = false.obs;
+  RxBool setPhoneIconColor = false.obs;
 
   @override
   void onInit() {
@@ -58,6 +62,8 @@ class LoginController extends GetxController
         btnControlller.reset();
       }
       print('tabController: $tabController');
-    } else {}
+    } else {
+      btnControlller.reset();
+    }
   }
 }
