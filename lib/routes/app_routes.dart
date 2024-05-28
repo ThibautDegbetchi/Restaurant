@@ -3,6 +3,8 @@ import 'package:restaurant/presentation/login_screen/binding/login_binding.dart'
 import 'package:restaurant/presentation/login_screen/login_screen.dart';
 import 'package:restaurant/presentation/register_screen/binding/register_binding.dart';
 import 'package:restaurant/presentation/register_screen/register_screen.dart';
+import 'package:restaurant/presentation/splash_screen/binding/splash_binding.dart';
+import 'package:restaurant/presentation/splash_screen/splash_screen.dart';
 // import 'package:restaurant/presentation/splash_screen/bindings/onboarding_binding.dart';
 
 import '../presentation/home_one_screen/bindings/home_one_binding.dart';
@@ -14,6 +16,7 @@ import '../presentation/onboarding_screen/bindings/onboarding_binding.dart';
 
 class AppRoutes {
   static const String initialRoute = '/initialRoute';
+  static const String onboardingScreen = '/onboarding_screen';
   static const String homeOneScreen = '/home_one_screen';
   static const String homeScreen = '/home_screen';
   static const String loginScreen = '/login_screen';
@@ -22,6 +25,10 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
         name: initialRoute,
+        page: () => SplashScreen(),
+        bindings: [SplashBinding()]),
+    GetPage(
+        name: onboardingScreen,
         page: () => OnboardingScreen(),
         bindings: [OnboardingBinding()]),
     GetPage(

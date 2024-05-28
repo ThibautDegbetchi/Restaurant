@@ -51,7 +51,8 @@ class OnboardingScreen extends GetWidget<OnboardingController> {
                     height: 300,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(ImageConstant.imgLogo1),
+                            image: AssetImage(
+                                ImageConstant.imgCoffeeCupSaucerTeaspoon),
                             fit: BoxFit.cover)),
                   )),
               Positioned(
