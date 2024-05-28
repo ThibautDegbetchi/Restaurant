@@ -17,9 +17,9 @@ class SplashScreen extends GetWidget<SplashController> {
           splash: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 200,
-                width: 200,
+              SizedBox(
+                height: 300,
+                width: 300,
                 child: Image.asset(
                   ImageConstant.imgLogo1,
                   fit: BoxFit.cover,
@@ -31,8 +31,8 @@ class SplashScreen extends GetWidget<SplashController> {
           splashIconSize: 500,
           splashTransition: SplashTransition.scaleTransition,
           pageTransitionType: PageTransitionType.leftToRight,
-          animationDuration: Duration(seconds: 2),
-          nextScreen: OnboardingScreen()),
+          animationDuration: const Duration(seconds: 2),
+          nextScreen: const OnboardingScreen()),
     );
   }
 }
