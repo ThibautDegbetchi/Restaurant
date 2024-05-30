@@ -1,6 +1,14 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:restaurant/presentation/detail_screen/binding/detail_binding.dart';
+import 'package:restaurant/presentation/detail_screen/detail_screen.dart';
+import 'package:restaurant/presentation/favorit_screen/binding/favorit_binding.dart';
+import 'package:restaurant/presentation/favorit_screen/favorit_screen.dart';
+import 'package:restaurant/presentation/location_screen/binding/location_binding.dart';
+import 'package:restaurant/presentation/location_screen/location_screen.dart';
 import 'package:restaurant/presentation/login_screen/binding/login_binding.dart';
 import 'package:restaurant/presentation/login_screen/login_screen.dart';
+import 'package:restaurant/presentation/profile_screen/binding/porfile_binding.dart';
+import 'package:restaurant/presentation/profile_screen/profile_screen.dart';
 import 'package:restaurant/presentation/register_screen/binding/register_binding.dart';
 import 'package:restaurant/presentation/register_screen/register_screen.dart';
 import 'package:restaurant/presentation/splash_screen/binding/splash_binding.dart';
@@ -22,6 +30,11 @@ class AppRoutes {
   static const String loginScreen = '/login_screen';
   static const String registerScreen = '/register_screen';
 
+  static const String detailScreen = '/detail_screen';
+  static const String favoritScreen = '/favorit_screen';
+  static const String profileScreen = '/profile_screen';
+  static const String locationScreen = '/location_screen';
+
   static List<GetPage> pages = [
     GetPage(
         name: initialRoute,
@@ -29,7 +42,7 @@ class AppRoutes {
         bindings: [SplashBinding()]),
     GetPage(
         name: onboardingScreen,
-        page: () => OnboardingScreen(),
+        page: () => const OnboardingScreen(),
         bindings: [OnboardingBinding()]),
     GetPage(
         name: homeOneScreen,
@@ -45,5 +58,21 @@ class AppRoutes {
         name: registerScreen,
         page: () => RegisterScreen(),
         bindings: [RegisterBinding()]),
+    GetPage(
+        name: detailScreen,
+        page: () => DetailScreen(),
+        bindings: [DetailBinding()]),
+    GetPage(
+        name: profileScreen,
+        page: () => ProfileScreen(),
+        bindings: [ProfileBinding()]),
+    GetPage(
+        name: favoritScreen,
+        page: () => FavoritScreen(),
+        bindings: [FavoritBinding()]),
+    GetPage(
+        name: locationScreen,
+        page: () => LocationScreen(),
+        bindings: [LocationBinding()]),
   ];
 }

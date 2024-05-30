@@ -404,7 +404,9 @@ class LoginScreen extends GetWidget<LoginController> {
                           color: ColorConstant.deep,
                           borderRadius: 14,
                           controller: controller.btnControlller,
-                          onPressed: controller.doSomething,
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.homeOneScreen);
+                          } /*controller.doSomething*/,
                           child: Text(
                             'msg_login'.tr,
                             style: TextStyle(
