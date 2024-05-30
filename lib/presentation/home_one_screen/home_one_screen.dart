@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant/core/utils/color_constant.dart';
 import 'package:restaurant/presentation/favorit_screen/favorit_screen.dart';
 import 'package:restaurant/presentation/home_one_screen/controller/home_one_controller.dart';
 import 'package:restaurant/presentation/home_screen/home_screen.dart';
@@ -31,11 +32,13 @@ class HomeOneScreen extends StatelessWidget {
             controller.type.value = type;
           }),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: ColorConstant.black,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30))),
         child: const Icon(
           Icons.add,
           size: 30,
+          color: Colors.white,
         ),
         onPressed: () {
           print("hello! you clicked on add button");
