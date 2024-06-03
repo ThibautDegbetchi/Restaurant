@@ -385,6 +385,18 @@ class CustomButton extends StatelessWidget {
             1.00,
           ),
         );
+      case ButtonFontStyle.deepNormal:
+        return TextStyle(
+          color: ColorConstant.deep900,
+          fontSize: getFontSize(
+            14,
+          ),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.normal,
+          height: getVerticalSize(
+            1.00,
+          ),
+        );
 
       default:
         return TextStyle(
@@ -443,5 +455,6 @@ enum ButtonFontStyle {
   MontserratRomanRegular12,
   MontserratRomanRegular12Neutre,
   deepBold,
-  NunitoRegularGrey
+  NunitoRegularGrey,
+  deepNormal
 }

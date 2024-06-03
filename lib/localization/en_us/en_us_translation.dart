@@ -12,6 +12,7 @@ final Map<String, String> enUs = {
   'lbl_you_want': 'You Want Coffee',
   'msg_deel': 'Deel of the week',
   'lbl_buy': 'Buy Now',
+  'lbl_price': '\$7.40',
   "msg_nb": "3",
   "msg_got_discount_coupon": "Got discount coupons on any items",
   'msg__feature': 'Feature',
