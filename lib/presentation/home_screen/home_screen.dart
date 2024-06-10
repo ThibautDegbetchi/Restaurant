@@ -319,102 +319,107 @@ class HomeScreen extends StatelessWidget {
       crossAxisSpacing: 8,
       itemBuilder: (context, index) {
         var model = controller.products[index];
-        return Obx(() => Card(
-              elevation: 3,
-              child: Container(
-                padding: EdgeInsets.only(bottom: 5, left: 5, right: 5),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 150,
-                      child: Stack(
+        return Obx(() => InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.detailScreen, arguments: [model]);
+              },
+              child: Card(
+                elevation: 3,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 5, left: 5, right: 5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 150,
+                        width: 150,
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              ImageConstant.imgLogo1,
+                              fit: BoxFit.cover,
+                            ),
+                            Positioned(
+                                right: 1,
+                                top: 1,
+                                child: IconButton(
+                                  onPressed: () {
+                                    model.isFavorit.value =
+                                        !model.isFavorit.value;
+                                  },
+                                  icon: model.isFavorit.value
+                                      ? Icon(Icons.favorite)
+                                      : Icon(Icons.favorite_border),
+                                  color: model.isFavorit.value
+                                      ? ColorConstant.pink
+                                      : ColorConstant.black,
+                                ))
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset(
-                            ImageConstant.imgLogo1,
-                            fit: BoxFit.cover,
+                          Column(
+                            children: [
+                              Text(
+                                model.name.value,
+                                style: TextStyle(
+                                    color: ColorConstant.black, fontSize: 15),
+                              ),
+                              Text(
+                                model.subDescription.value,
+                                style: TextStyle(
+                                    color: ColorConstant.grey, fontSize: 10),
+                              ),
+                            ],
                           ),
-                          Positioned(
-                              right: 1,
-                              top: 1,
-                              child: IconButton(
-                                onPressed: () {
-                                  model.isFavorit.value =
-                                      !model.isFavorit.value;
-                                },
-                                icon: model.isFavorit.value
-                                    ? Icon(Icons.favorite)
-                                    : Icon(Icons.favorite_border),
-                                color: model.isFavorit.value
-                                    ? ColorConstant.pink
-                                    : ColorConstant.black,
-                              ))
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Colors.yellow,
+                                size: 8,
+                              ),
+                              Text(
+                                model.numberStars.value.toString(),
+                                style: TextStyle(
+                                    color: ColorConstant.black, fontSize: 10),
+                              )
+                            ],
+                          )
                         ],
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              model.name.value,
-                              style: TextStyle(
-                                  color: ColorConstant.black, fontSize: 15),
-                            ),
-                            Text(
-                              model.subDescription.value,
-                              style: TextStyle(
-                                  color: ColorConstant.grey, fontSize: 10),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 8,
-                            ),
-                            Text(
-                              model.numberStars.value.toString(),
-                              style: TextStyle(
-                                  color: ColorConstant.black, fontSize: 10),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "\$" + model.price.value.toString(),
-                          style: TextStyle(
-                              color: ColorConstant.deep, fontSize: 15),
-                        ),
-                        Container(
-                          height: 25,
-                          width: 25,
-                          decoration: BoxDecoration(
-                              color: model.isLocked.value
-                                  ? ColorConstant.black
-                                  : ColorConstant.whiteA700,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: model.isLocked.value
-                              ? Icon(
-                                  Icons.lock_outline,
-                                  color: ColorConstant.whiteA700,
-                                )
-                              : Icon(
-                                  Icons.lock_open_outlined,
-                                  color: ColorConstant.black,
-                                ),
-                        )
-                      ],
-                    )
-                  ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "\$" + model.price.value.toString(),
+                            style: TextStyle(
+                                color: ColorConstant.deep, fontSize: 15),
+                          ),
+                          Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                color: model.isLocked.value
+                                    ? ColorConstant.black
+                                    : ColorConstant.whiteA700,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: model.isLocked.value
+                                ? Icon(
+                                    Icons.lock_outline,
+                                    color: ColorConstant.whiteA700,
+                                  )
+                                : Icon(
+                                    Icons.lock_open_outlined,
+                                    color: ColorConstant.black,
+                                  ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ));

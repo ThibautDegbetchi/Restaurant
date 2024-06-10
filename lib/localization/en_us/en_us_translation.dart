@@ -13,6 +13,7 @@ final Map<String, String> enUs = {
   'msg_deel': 'Deel of the week',
   'lbl_buy': 'Buy Now',
   'lbl_price': '\$7.40',
+  'msg_price': 'Price',
   "msg_nb": "3",
   'msg_feature': 'Feature',
   "msg_cold_brew": "Cold Brew",
