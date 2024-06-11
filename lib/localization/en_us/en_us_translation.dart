@@ -59,4 +59,5 @@ final Map<String, String> enUs = {
   'lbl_password_confirm': 'Confirmer mot de passe',
   'msg_no_favorit': 'Pas de produit favorit',
   "msg_favorit": "Favorit",
+  "msg_profile": "Profil",
 };
