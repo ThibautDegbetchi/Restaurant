@@ -1,8 +1,6 @@
 import 'package:carousel_slider/carousel_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../core/utils/image_constant.dart';
 import '../../../data/models/product_model.dart';
 
@@ -80,6 +78,7 @@ class HomeController extends GetxController
         price: 9.00.obs,
         isLocked: true.obs),
   ];
+  List favorit = [].obs;
   @override
   void onInit() {
     tabController = TabController(length: 3, vsync: this);

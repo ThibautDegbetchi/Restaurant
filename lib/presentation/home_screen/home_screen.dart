@@ -1,18 +1,12 @@
-import 'dart:ffi';
-
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
-import 'package:get/get.dart';
 import 'package:restaurant/core/app_export.dart';
 import 'package:restaurant/core/utils/color_constant.dart';
 import 'package:restaurant/presentation/home_screen/controller/home_controller.dart';
 import 'package:restaurant/widgets/custom_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../data/models/product_model.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -22,15 +16,15 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: Container(
+            height: 50,
+            width: 50,
+            decoration: const BoxDecoration(
+                // color: ColorConstant.chocolate,
+                borderRadius: BorderRadius.all(Radius.circular(30))),
             child: Image.asset(
               ImageConstant.imgCoffeeCupSaucerTeaspoon,
               fit: BoxFit.cover,
             ),
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-                // color: ColorConstant.chocolate,
-                borderRadius: BorderRadius.all(Radius.circular(30))),
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                     "msg_location".tr,
                     style: TextStyle(color: ColorConstant.black, fontSize: 15),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   Icon(
@@ -74,7 +68,7 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
+                SizedBox(
                   height: 30,
                   width: 35,
                   // color: Colors.red,
@@ -86,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                         bottom: 0.3,
                         child: IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.lock_outline,
                               size: 20,
                             )),
@@ -153,7 +147,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               CarouselSlider.builder(
@@ -174,7 +168,7 @@ class HomeScreen extends StatelessWidget {
                   return Container(
                     height: size.height * 0.4,
                     width: size.width * 0.9,
-                    padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                    padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
                     decoration: BoxDecoration(
                         color: ColorConstant.grey.withOpacity(0.1)),
                     child: Row(
@@ -188,7 +182,7 @@ class HomeScreen extends StatelessWidget {
                               "lbl_you_want".tr,
                               style: TextStyle(
                                   color: ColorConstant.black,
-                                  fontSize: 17,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
@@ -217,7 +211,7 @@ class HomeScreen extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Container(
@@ -239,7 +233,7 @@ class HomeScreen extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
+                            SizedBox(
                               height: 148,
                               width: 118,
                               // color: Colors.grey,
@@ -288,7 +282,7 @@ class HomeScreen extends StatelessWidget {
               ]),
               Container(
                 height: 300,
-                margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+                margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
                 child: Column(
                   children: [
                     Expanded(
@@ -318,6 +312,7 @@ class HomeScreen extends StatelessWidget {
       mainAxisSpacing: 15,
       crossAxisSpacing: 8,
       itemBuilder: (context, index) {
+        // print(controller.products);
         var model = controller.products[index];
         return Obx(() => InkWell(
               onTap: () {
@@ -326,7 +321,7 @@ class HomeScreen extends StatelessWidget {
               child: Card(
                 elevation: 3,
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 5, left: 5, right: 5),
+                  padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -346,10 +341,21 @@ class HomeScreen extends StatelessWidget {
                                   onPressed: () {
                                     model.isFavorit.value =
                                         !model.isFavorit.value;
+                                    if (!controller.favorit.contains(model)) {
+                                      controller.favorit.add(model);
+                                      print("add product to favorit ${model}");
+                                      print(
+                                          "product list :${controller.favorit}");
+                                    } else {
+                                      controller.favorit.remove(model);
+                                      print("remove product to favorit $model");
+                                      print(
+                                          "product list :${controller.favorit}");
+                                    }
                                   },
                                   icon: model.isFavorit.value
-                                      ? Icon(Icons.favorite)
-                                      : Icon(Icons.favorite_border),
+                                      ? const Icon(Icons.favorite)
+                                      : const Icon(Icons.favorite_border),
                                   color: model.isFavorit.value
                                       ? ColorConstant.pink
                                       : ColorConstant.black,
@@ -365,7 +371,7 @@ class HomeScreen extends StatelessWidget {
                               Text(
                                 model.name.value,
                                 style: TextStyle(
-                                    color: ColorConstant.black, fontSize: 15),
+                                    color: ColorConstant.black, fontSize: 14),
                               ),
                               Text(
                                 model.subDescription.value,
@@ -376,7 +382,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 color: Colors.yellow,
                                 size: 8,
@@ -396,7 +402,7 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             "\$" + model.price.value.toString(),
                             style: TextStyle(
-                                color: ColorConstant.deep, fontSize: 15),
+                                color: ColorConstant.deep, fontSize: 14),
                           ),
                           Container(
                             height: 25,
@@ -425,7 +431,7 @@ class HomeScreen extends StatelessWidget {
             ));
       },
       crossAxisCount: 2,
-      staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
+      staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
     );
   }
 }
