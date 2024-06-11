@@ -99,7 +99,9 @@ class DetailScreen extends StatelessWidget {
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
                 ),
-                buildText(Get.arguments[0].description.value),
+                GetBuilder<DetailController>(builder: (controller) {
+                  return buildText(Get.arguments[0].description.value);
+                }),
                 buildbutton(),
                 SizedBox(
                   height: 5,
