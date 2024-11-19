@@ -139,6 +139,87 @@ class DetailScreen extends StatelessWidget {
                   ],
                 ),
                 //list of reviews
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                  ),
+                  child: SizedBox(
+                    height: size.height * 0.05,
+                    width: size.width,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/images_coffee.png'),
+                            radius: 15,
+                          ),
+                        ),
+                        Positioned(
+                          left: 20,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/images_coffee.png'),
+                            radius: 15,
+                          ),
+                        ),
+                        Positioned(
+                          left: 40,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/images_coffee.png'),
+                            radius: 15,
+                          ),
+                        ),
+                        Positioned(
+                          left: 60,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/images_coffee.png'),
+                            radius: 15,
+                          ),
+                        ),
+                        Positioned(
+                          left: 80,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/images_coffee.png'),
+                            radius: 15,
+                          ),
+                        ),
+                        Positioned(
+                          left: 100,
+                          child: CircleAvatar(
+                            backgroundColor: ColorConstant.whiteA700,
+                            child: Text(
+                              '5k',
+                            ),
+                            radius: 15,
+                          ),
+                        ),
+                        Positioned(
+                            left: 140,
+                            top: 5,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                    width:
+                                        5), // Espace entre les avatars et le texte
+                                // Section du texte des reviews
+                                Text(
+                                  'Reviews',
+                                  style: TextStyle(
+                                    color: ColorConstant.grey,
+                                  ),
+                                )
+                              ],
+                            ))
+                      ],
+                      //overflow: Overflow.visible,
+                    ),
+                  ),
+                ),
                 Container(
                     height: size.height * 0.054,
                     width: size.width * 0.9,
