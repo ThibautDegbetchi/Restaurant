@@ -15,6 +15,8 @@ import 'package:restaurant/presentation/splash_screen/binding/splash_binding.dar
 import 'package:restaurant/presentation/splash_screen/splash_screen.dart';
 // import 'package:restaurant/presentation/splash_screen/bindings/onboarding_binding.dart';
 
+import '../presentation/checkout_screen/binding/checkout_binding.dart';
+import '../presentation/checkout_screen/checkout_screen.dart';
 import '../presentation/home_one_screen/bindings/home_one_binding.dart';
 import '../presentation/home_one_screen/home_one_screen.dart';
 import '../presentation/home_screen/binding/home_binding.dart';
@@ -34,6 +36,7 @@ class AppRoutes {
   static const String favoritScreen = '/favorit_screen';
   static const String profileScreen = '/profile_screen';
   static const String locationScreen = '/location_screen';
+  static const String checkoutScreen = '/checkout_screen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -74,5 +77,9 @@ class AppRoutes {
         name: locationScreen,
         page: () => LocationScreen(),
         bindings: [LocationBinding()]),
+    GetPage(
+        name: checkoutScreen,
+        page: () => CheckoutScreen(),
+        bindings: [CheckoutBinding()]),
   ];
 }
