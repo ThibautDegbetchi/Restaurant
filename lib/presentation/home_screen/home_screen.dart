@@ -79,7 +79,9 @@ class HomeScreen extends StatelessWidget {
                         right: 0.1,
                         bottom: 0.3,
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(AppRoutes.checkoutScreen);
+                            },
                             icon: const Icon(
                               Icons.lock_outline,
                               size: 20,

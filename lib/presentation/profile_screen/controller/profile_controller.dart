@@ -32,7 +32,7 @@ class ProfileController extends GetxController {
     'lbl_user_pref'
   ];
   List<String> subTitles = [
-    'msg_order_info',
+    'msg_order_info_prof',
     'msg_payment',
     'msg_delivery_location',
     'msg_user_pref'
