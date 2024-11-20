@@ -28,7 +28,7 @@ class CheckoutScreen extends StatelessWidget {
         ],
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             height: size.height * 0.6,
@@ -47,7 +47,7 @@ class CheckoutScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +58,9 @@ class CheckoutScreen extends StatelessWidget {
                       fontSize: 15, fontWeight: FontWeight.bold),
                   maxLines: 1,
                 ),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
                 Column(
                   children: [
                     Row(
@@ -66,7 +69,7 @@ class CheckoutScreen extends StatelessWidget {
                         AutoSizeText(
                           'msg_sub_total'.tr,
                           style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15, fontWeight: FontWeight.normal),
                           maxLines: 1,
                         ),
                         AutoSizeText(
@@ -77,13 +80,16 @@ class CheckoutScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AutoSizeText(
                           'msg_delivery'.tr,
                           style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15, fontWeight: FontWeight.normal),
                           maxLines: 1,
                         ),
                         AutoSizeText(
@@ -94,13 +100,16 @@ class CheckoutScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AutoSizeText(
                           'msg_discount_text'.tr,
                           style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15, fontWeight: FontWeight.normal),
                           maxLines: 1,
                         ),
                         AutoSizeText(
@@ -110,6 +119,9 @@ class CheckoutScreen extends StatelessWidget {
                           maxLines: 1,
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,18 +142,21 @@ class CheckoutScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                    height: size.height * 0.054,
-                    width: size.width * 0.8,
-                    margin: getMarginOrPadding(all: 22),
-                    child: CustomButton(
-                      shape: ButtonShape.RoundedBorder15,
-                      text: 'lbl_get_it'.tr,
-                      onTap: () {},
-                    )),
               ],
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+              height: size.height * 0.054,
+              width: size.width * 0.8,
+              // margin: getMarginOrPadding(all: 22),
+              child: CustomButton(
+                shape: ButtonShape.RoundedBorder15,
+                text: 'lbl_get_it'.tr,
+                onTap: () {},
+              )),
         ],
       ),
     );
